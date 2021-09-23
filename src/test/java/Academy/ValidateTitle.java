@@ -3,54 +3,51 @@ package Academy;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import pageObjects.LandingPage;
-import pageObjects.LoginPage;
 import resources.Base;
 
-public class Homepage extends Base {
+public class ValidateTitle extends Base {
 	public WebDriver driver;
 	public static Logger log=LogManager.getLogger(Base.class.getName());
 	@BeforeTest
 	public void initialize() throws Throwable
 	{
 		driver=initializeDriver();
-		
+		driver.get(prop.getProperty("url"));
+		log.info("Navigated to homepage");
 	}
 	
-	@Test (dataProvider="getData")
-	public void basePageNavigation(String username, String password, String text) throws Throwable
+
+	
+	@Test
+	public void basePageNavigation() throws Throwable
 	{
-	driver.get(prop.getProperty("url"));
-	log.info("navigated to the homepage");
-	
-	
-	LandingPage l=new LandingPage(driver);
-	l.closeNotification().click();
-	l.getLogin().click();
-	LoginPage lp=new LoginPage(driver);
-	lp.enterMail().sendKeys(username);
-	lp.enterPassword().sendKeys(password);
-	lp.clickLogin().click();
-	log.info(text);
-	
+		
+		LandingPage l=new LandingPage(driver);
+		
+		System.out.println(l.getTitle().getText());
+		Assert.assertEquals(l.getTitle().getText(), "FEATURED COURSES");
+		Assert.assertTrue(l.getTitle().getText().equals("FEATURED COURSES"));
+		log.info("Succesfully validated the text");
 	}
 	
 	@DataProvider
 	public Object[][] getData()
 	{//rows stand for how many different data
-		Object[][] data=new Object[1][3];
-		data[0][0]="restricteduser@ubc.com";
+		Object[][] data=new Object[2][3];
+		data[0][0]="abcd";
 		data[0][1]="password";
 		data[0][2]="text";
 		
-//		data[1][0]="nonrestricteduser@ubc.com";
-//		data[1][1]="password123";
-//		data[1][2]="specialtext";
+		data[1][0]="restricteduser@abc.com";
+		data[1][1]="password123";
+		data[1][2]="specialtext";
 		
 		return data;
 	
@@ -61,5 +58,4 @@ public class Homepage extends Base {
 	{
 		driver.close();
 	}
-
 }

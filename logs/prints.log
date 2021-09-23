@@ -1,0 +1,8 @@
+2021-09-23 20:59:38,257 INFO r.Base [main] Navigated to homepage
+2021-09-23 21:00:20,081 INFO r.Base [main] Navigation bar is validated succesfully
+2021-09-23 21:02:09,965 INFO r.Base [main] navigated to the homepage
+2021-09-23 21:03:02,832 INFO r.Base [main] text
+2021-09-23 21:03:04,494 INFO r.Base [main] Succesfully validated the text
+2021-09-23 22:37:20,996 INFO r.Base [main] Navigation bar is validated succesfully
+2021-09-23 22:37:50,495 INFO r.Base [main] navigated to the homepage
+2021-09-23 22:38:05,411 INFO r.Base [main] text

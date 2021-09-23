@@ -13,7 +13,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class Base {
 	
 	public WebDriver driver;
-
+	public Properties prop=new Properties();
 	public WebDriver initializeDriver() throws Throwable
 	{
 		//chrome
@@ -21,9 +21,7 @@ public class Base {
 		//Mozilla
 		
 		//internet explorer
-		
-		
-		Properties prop=new Properties();
+				
 		FileInputStream fis=new FileInputStream("C:\\Users\\hp\\workspace2\\E2EProject\\src\\main\\java\\resources\\data.properties");
 		prop.load(fis);
 		String browserName=prop.getProperty("browser");
