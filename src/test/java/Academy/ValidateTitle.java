@@ -22,17 +22,15 @@ public class ValidateTitle extends Base {
 		driver.get(prop.getProperty("url"));
 		log.info("Navigated to homepage");
 	}
-	
-
-	
+		
 	@Test
 	public void basePageNavigation() throws Throwable
 	{
-		
+	
 		LandingPage l=new LandingPage(driver);
 		
 		System.out.println(l.getTitle().getText());
-		Assert.assertEquals(l.getTitle().getText(), "FEATURED COURSES");
+		Assert.assertEquals(l.getTitle().getText(), "FEATURED COURSES123");
 		Assert.assertTrue(l.getTitle().getText().equals("FEATURED COURSES"));
 		log.info("Succesfully validated the text");
 	}
